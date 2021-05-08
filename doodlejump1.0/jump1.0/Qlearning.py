@@ -91,6 +91,6 @@ previous_collision = -1
 target_platform = -2
 base_score = 0
 
-
+# 还没翻译完
 def get_states():
     state = []
