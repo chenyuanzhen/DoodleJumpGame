@@ -7,17 +7,19 @@
 import pygame
 import time
 
+from pygame.sprite import Sprite
+
 '''
     class name: Graffiti
     effect: 操纵角色的类
 '''
 
 
-class Graffiti():
-    '''构造函数'''
+class Graffiti(Sprite):
+    # 构造函数
 
     def __init__(self, screen, ai_settings):
-
+        super().__init__()
         self.screen = screen
         self.ai_settings = ai_settings
 
@@ -75,7 +77,7 @@ class Graffiti():
                                - self.bottom_distance
 
             # 调用sprite的碰撞检测方法看是否掉落至屏幕底部
-            is_been_hit = pygame.sprite.spritecollideany(self, pedals, False)
+            is_been_hit = pygame.sprite.spritecollideany(self, pedals)
             # 踩空了就令
             if is_been_hit:
                 if self.rect.bottom == is_been_hit.rect.top + 1:
