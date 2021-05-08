@@ -30,3 +30,8 @@
 	- 这样的判断方法在测试中造成了游戏较为卡顿，需要找到更好的跳跃画面刷新/踏板判定方法
 
 Qleraning 更新一部分，因Qlearning需要从游戏更新中获取状态，如主角离踏板的x轴，y轴距离，踏板的类型。 所以还有部分没有更新
+
+
+
+借用了 https://github.com/MykleCode/pygame-doodlejump/blob/main/doddleJump.py 实现的doodleJump. 保存于otherVersion. 可以在该文件的基础上, 修改一下.(如换皮之类的)
+
