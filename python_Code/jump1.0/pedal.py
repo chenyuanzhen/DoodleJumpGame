@@ -11,6 +11,8 @@ from pygame.sprite import Sprite
     class name: Pedal
     effect: 基于Sprite的踏板类，用于涂鸦进行跳跃
 '''
+
+
 class Pedal(Sprite):
     """构造函数"""
     def __init__(self, ai_settings, screen):
