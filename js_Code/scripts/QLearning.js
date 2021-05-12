@@ -92,6 +92,7 @@ var base_score = 0;
 function get_states() {
     state = [];
     platforms.forEach(function(p, i) {
+        // 读取当前platforms的数据, 往state状态数组插入每一个平台的类型, 离主角的x距离, y距离
         // state.push([1 * (p.state || (p.type == 3)), (Math.round((p.y - player.y) / ydivision) * ydivision) + Math.abs(Math.round( (p.x - player.x) / 6))]);
         state.push([1 * (p.state || (p.type == 3)) + 2 * (p.type == 2), (Math.round((p.y - player.y) / ydivision) * ydivision), Math.abs(Math.round( (p.x - player.x) / xdivision))*xdivision]);
         // multiplying by division rescales it so if we change division value later on, we can still use the brain created in this version
@@ -110,7 +111,7 @@ var previous_player_height = 0;
 var scale_reward_pos = 1/75; // scale down reward because height difference is too high
 var scale_death;
 var previous_collision2 = -3;
-
+// 遍历当前的所有平台, 然后预测每一个平台的分数, 
 function decide() {
     // reward for previous prediction
     //gamespeed = 0; // pause
@@ -121,7 +122,8 @@ function decide() {
             brain.reward(-100*scale_death);
             //console.log("dead");
             reset();
-        } else {
+        } 
+        else {
             if(previous_collision != target_platform){
             	if(states[target_platform][1] < states[previous_collision][1])
                 	brain.reward(-20);
@@ -141,25 +143,31 @@ function decide() {
     }
     previous_score = score;
     states = get_states();
+
     predictions = [];
     maxreward = 0;
     maxrewardindex = 0;
+    // 遍历平台
     for (zz = 0; zz < states.length; zz++) {
             predictions[zz] = brain.predict(states[zz]);
+            // 用于显示分数
             platforms[zz].reward = predictions[zz];
             // if(predictions[zz] > predictions[maxrewardindex] && (zz != previous_collision)){
+            // 记录住得分最高的平台
             if(predictions[zz] > predictions[maxrewardindex]){
             	maxreward = predictions[zz];
             	maxrewardindex = zz;
             }
     }
+    // 记录目标平台
     target_platform = maxrewardindex;
-
+    // 预测
     brain.predict(states[target_platform]);
+    // 应该是根据target来确定要跳那个平台
     platforms.forEach(function(p, index) { p.target = 0; });
 	platforms[target_platform].target = 1;
 
-
+    // 记录上一次的状态
     previous_player_height = player.height;
     previous_collision2 = previous_collision;
 }
