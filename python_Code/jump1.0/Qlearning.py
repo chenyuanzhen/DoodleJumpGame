@@ -1,5 +1,5 @@
 import random as ra
-
+import json
 
 # import otherVersion as gameVersion
 
@@ -10,7 +10,7 @@ class Q_model:
     # 记录探索的状态数
     explored = 0
     # 记录上一个状态
-    last_state = [0, 0]
+    last_state = [0, 0, 0]
     # 学习率
     learning_rate = 1
     # 随机概率
@@ -70,58 +70,82 @@ class Q_model:
         if self.action[i][j][k] == 0 and positive == 1:
             self.action[i][j][k] -= 1
 
+    # 保存QTable 有问题, json可能会有重复的键
+    def saveTable(self):
+        f = open('QTable.json', 'w')
+        json.dump(self.action, f)
+        f.close()
+
+    def loadTable(self):
+        try:
+            f = open('QTable.json', 'r')
+            self.action = json.load(f)
+            f.close()
+        except IOError:
+            print("文件不存在或者文件无权限")
+
 
 brain = Q_model()
-previous_score = 0
-# how does this happen sometimes
-# the genie did it se c LLEOMLME L OLA DLOL OLOLOLOL
-previous_collision = -1
 # 目标平台的索引
-target_platform = -2
-base_score = 0
-states = []
+previous_score = 0
+isFirst = True
+target_platform = -1
+states = {}
 previous_player_height = 0
 scale_reward_pos = 1 / 75
-previous_collision2 = -3
+
+
+# 装载Qtable
+def loadTable():
+    brain.loadTable()
 
 
 # 遍历当前的所有平台, 然后预测每一个平台的分数
-def decide(platform, player, score):
+# previous_collision需要从外面更新, 因为target_platform不一定是当前平台
+def decide(platforms, player, score, previous_collision, counter=1):
+    global isFirst
     global previous_score
-    global previous_collision
     global states
     global target_platform
     global previous_player_height
-    global previous_collision2
+    if counter > 100 and counter % 1000 == 0:
+        print("次数达1000次, 保存QTable")
+        brain.saveTable()
 
-    if target_platform >= 0 and previous_score >= 0:
+    if target_platform >= 0 and previous_score >= 0 and isFirst is False:
+        # print("target: " + str(target_platform) + " now: " + str(previous_collision))
         if player.dead:
             scale_death = 1 + score / 2000
             brain.reward(-100 * scale_death)
+            previous_score = 0
+            target_platform = -1
+            isFirst = True
             # 重置游戏
-            return True
-            # gameVersion.resetGame()
+            return
         else:
             # 防止越跳越低
             if previous_collision != target_platform:
-                if states[target_platform][1] < states[previous_collision][1]:
+                # state[target_platform][1] 获取target_platform的高度,
+                if len(states) >= 2 and target_platform < len(states) and previous_collision < len(states) and states[target_platform][1] < states[previous_collision][1]:
                     brain.reward(-20)
-            # 防止原地罚站
+            # 防止原地tp
             else:
                 brain.reward(-10)
-            # 更新
-            brain.predict(states[previous_collision])
-            r = score - previous_score - 20
-            brain.reward(r)
+                if len(states) >= 2 and previous_collision < len(states):
+                    brain.predict(states[previous_collision])
+                    r = score - previous_score - 20
+                    brain.reward(r)
 
+    isFirst = False
     previous_score = score
-    states = get_states(platform, player)
+    states = get_states(platforms, player)
 
     predictions = {}
     maxRewardIndex = 0
     # 遍历平台 并从总挑选预测分数最高的平台
     for zz in range(0, len(states)):
         predictions[zz] = brain.predict(states[zz])
+        platforms[zz].predictScore = predictions[zz]
         if predictions[zz] > predictions[maxRewardIndex]:
             maxRewardIndex = zz
 
@@ -131,7 +155,6 @@ def decide(platform, player, score):
     brain.predict(states[target_platform])
     # 更新先前数据
     previous_player_height = player.rect.height
-    previous_collision2 = previous_collision2
     return False
 
 
@@ -154,13 +177,16 @@ def get_states(platforms, player):
 # 挑选出最适合的平台, 比较player和该平台的x距离, 做出移动
 # none 为不移动
 def direction(platforms, player):
-    pX = platforms[target_platform].posX()
     dire = "none"
-    # +6是为了防止player跳过平台, +6需要调整
-    if pX < player.posX():
-        dire = "left"
-    elif pX > player.posX():
-        dire = "right"
+    try:
+        pX = platforms[target_platform].posX()
+        # 防止player跳过平台
+        if pX < player.posX():
+            dire = "left"
+        elif pX > player.posX():
+            dire = "right"
+    except:
+        pass
 
     return dire, target_platform
 
