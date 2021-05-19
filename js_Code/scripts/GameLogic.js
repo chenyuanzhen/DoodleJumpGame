@@ -453,6 +453,7 @@ function init() {
 
             if (s.y > height / 1.1) s.state = 0;
 
+
             s.draw();
         } else {
             s.x = 0 - s.width;
