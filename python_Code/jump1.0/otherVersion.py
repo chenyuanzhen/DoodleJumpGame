@@ -1,5 +1,9 @@
-import pygame, sys, os, random
+import pygame
+import random
+import sys
 from pygame.locals import *
+
+import Qlearning as ql
 
 pygame.init()
 
@@ -154,6 +158,12 @@ class Block(pygame.sprite.Sprite):
             return 2
         return 0
 
+    def posX(self):
+        return self.rect.left + self.rect.width / 2
+
+    def posY(self):
+        return self.rect.top + self.rect.height / 2
+
     def __init__(self, x, y, w, h, color, breackable=False, canJump=True):
         self.image = pygame.Surface((w, h))
         self.image.fill(color)
@@ -176,6 +186,7 @@ class Bonus(pygame.sprite.Sprite):
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, sx, sy, w, h, jumpforce, color, gravity=True, gravVelocity=0.5, mass=1):
+        # sx, sy是将要移动的距离
         self.sx, self.sy = sx, sy
         self.accelRight, self.accelLeft, self.decceler = False, False, False
         self.accelVelocity = 0.5 / mass
@@ -196,6 +207,12 @@ class Player(pygame.sprite.Sprite):
         self.events = [0, 0, 0]
         self.score = 0
         self.dead = False
+
+    def posX(self):
+        return self.rect.left + self.rect.width / 2
+
+    def posY(self):
+        return self.rect.top + self.rect.height / 2
 
     def collide(self, sx, sy, colliders, bonuses):
         for p in colliders:
@@ -301,6 +318,7 @@ def taskManager(player):
         player.rect.y -= int(player.rect.height / 2)
         player.sy = -player.jumpforce
 
+
 def resetGame():
     player.__init__(300, 550, 0, 0, 25, 30, 12, COLORS[6])
     world.__init__(player.rect.x, player.rect.y, [COLORS[11], COLORS[10], COLORS[12]], [COLORS[9]])
@@ -336,13 +354,43 @@ def eventManager(event, player):
 
 
 loopGame = True
-
+lastPlayerSy = -10
 # Main Game Loop
 while loopGame:
+    # 在玩家当前y轴最高时, 做预判
+    if lastPlayerSy < 0 and player.sy == 0:
+        if ql.decide(world.platforms, player, player.score):
+            player.dead = False
+            resetGame()
+            continue
+
     for event in pygame.event.get():
         eventManager(event, player)
-    taskManager(player)
 
+    # 获取去达最佳平台的方向
+    dire, target_platform = ql.direction(world.platforms, player)
+    # 需要知道当前要跳往的平台
+    if dire == "left":
+        player.sx = -1.5
+        player.events[0] = 1
+        player.events[1] = 0
+        # 当到达目标平台时, 停止移动
+        if world.platforms[target_platform].posX() <= player.posX() <= world.platforms[target_platform].posX() + world.platforms[target_platform].rect.width:
+            player.events[0] = 0
+            player.events[1] = 0
+            player.sx = 0
+
+    elif dire == "right":
+        player.sx = 1.5
+        player.events[1] = 1
+        player.events[0] = 0
+        # 当到达目标平台时,停止移动
+        if world.platforms[target_platform].posX() <= player.posX() <= world.platforms[target_platform].posX() + world.platforms[target_platform].rect.width:
+            player.events[0] = 0
+            player.events[1] = 0
+            player.sx = 0
+
+    taskManager(player)
     camera.update(player)
     world.update(camera)
 
@@ -360,4 +408,7 @@ while loopGame:
         text(200, 300, FONTS[1], COLORS[1], "SCORE: " + str(int(player.score * 0.02646)) + " m", window)
 
     pygame.display.update()
+    if player.dead:
+        player.dead = False
+        resetGame()
     clock.tick(FPS)

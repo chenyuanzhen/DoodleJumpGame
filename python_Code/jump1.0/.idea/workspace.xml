@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91fa5638-7bd5-4912-a374-c4cbe4d0baf6" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/python_Code.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/QLearning.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../js_Code/scripts/QLearning.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jump1.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jump1.0.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../test" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Qlearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Qlearning.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/otherVersion.py" beforeDir="false" afterPath="$PROJECT_DIR$/otherVersion.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pedal.py" beforeDir="false" afterPath="$PROJECT_DIR$/pedal.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,6 +113,7 @@
       <workItem from="1620367349582" duration="351000" />
       <workItem from="1620817555055" duration="3931000" />
       <workItem from="1620821999774" duration="4304000" />
+      <workItem from="1621384300512" duration="8771000" />
     </task>
     <servers />
   </component>
@@ -125,39 +121,85 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="295" key="GridCell.Tab.0.bottom" timestamp="1620830247580">
-      <screen x="0" y="25" width="1440" height="804" />
+    <state width="678" height="121" key="GridCell.Tab.0.bottom" timestamp="1621407197566">
+      <screen x="0" y="25" width="1440" height="802" />
     </state>
+    <state width="1398" height="163" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621406971146" />
+    <state width="678" height="121" key="GridCell.Tab.0.bottom/0.25.1440.802@0.25.1440.802" timestamp="1621407197566" />
     <state width="1398" height="295" key="GridCell.Tab.0.bottom/0.25.1440.804@0.25.1440.804" timestamp="1620830247580" />
-    <state width="1398" height="295" key="GridCell.Tab.0.center" timestamp="1620830247579">
-      <screen x="0" y="25" width="1440" height="804" />
+    <state width="678" height="121" key="GridCell.Tab.0.center" timestamp="1621407197565">
+      <screen x="0" y="25" width="1440" height="802" />
     </state>
+    <state width="1398" height="163" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1621406971144" />
+    <state width="678" height="121" key="GridCell.Tab.0.center/0.25.1440.802@0.25.1440.802" timestamp="1621407197565" />
     <state width="1398" height="295" key="GridCell.Tab.0.center/0.25.1440.804@0.25.1440.804" timestamp="1620830247579" />
-    <state width="1398" height="295" key="GridCell.Tab.0.left" timestamp="1620830247579">
-      <screen x="0" y="25" width="1440" height="804" />
+    <state width="678" height="121" key="GridCell.Tab.0.left" timestamp="1621407197565">
+      <screen x="0" y="25" width="1440" height="802" />
     </state>
+    <state width="1398" height="163" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1621406971143" />
+    <state width="678" height="121" key="GridCell.Tab.0.left/0.25.1440.802@0.25.1440.802" timestamp="1621407197565" />
     <state width="1398" height="295" key="GridCell.Tab.0.left/0.25.1440.804@0.25.1440.804" timestamp="1620830247579" />
-    <state width="1398" height="295" key="GridCell.Tab.0.right" timestamp="1620830247580">
-      <screen x="0" y="25" width="1440" height="804" />
+    <state width="678" height="121" key="GridCell.Tab.0.right" timestamp="1621407197566">
+      <screen x="0" y="25" width="1440" height="802" />
     </state>
+    <state width="1398" height="163" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1621406971145" />
+    <state width="678" height="121" key="GridCell.Tab.0.right/0.25.1440.802@0.25.1440.802" timestamp="1621407197566" />
     <state width="1398" height="295" key="GridCell.Tab.0.right/0.25.1440.804@0.25.1440.804" timestamp="1620830247580" />
+    <state width="678" height="121" key="GridCell.Tab.1.bottom" timestamp="1621407197567">
+      <screen x="0" y="25" width="1440" height="802" />
+    </state>
+    <state width="1398" height="285" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621406579264" />
+    <state width="678" height="121" key="GridCell.Tab.1.bottom/0.25.1440.802@0.25.1440.802" timestamp="1621407197567" />
+    <state width="678" height="121" key="GridCell.Tab.1.center" timestamp="1621407197567">
+      <screen x="0" y="25" width="1440" height="802" />
+    </state>
+    <state width="1398" height="285" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1621406579263" />
+    <state width="678" height="121" key="GridCell.Tab.1.center/0.25.1440.802@0.25.1440.802" timestamp="1621407197567" />
+    <state width="678" height="121" key="GridCell.Tab.1.left" timestamp="1621407197566">
+      <screen x="0" y="25" width="1440" height="802" />
+    </state>
+    <state width="1398" height="285" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1621406579263" />
+    <state width="678" height="121" key="GridCell.Tab.1.left/0.25.1440.802@0.25.1440.802" timestamp="1621407197566" />
+    <state width="678" height="121" key="GridCell.Tab.1.right" timestamp="1621407197567">
+      <screen x="0" y="25" width="1440" height="802" />
+    </state>
+    <state width="1398" height="285" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1621406579264" />
+    <state width="678" height="121" key="GridCell.Tab.1.right/0.25.1440.802@0.25.1440.802" timestamp="1621407197567" />
     <state x="0" y="43" key="SettingsEditor" timestamp="1620829693949">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="0" y="43" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1620829693949" />
     <state x="0" y="63" key="SettingsEditor/0.25.1440.804@0.25.1440.804" timestamp="1620821986656" />
-    <state x="720" y="26" width="720" height="803" key="dock-window-1" timestamp="1620818789168">
-      <screen x="0" y="25" width="1440" height="804" />
+    <state x="720" y="26" width="720" height="801" key="dock-window-1" timestamp="1621384801738">
+      <screen x="0" y="25" width="1440" height="802" />
     </state>
+    <state x="720" y="26" width="720" height="801" key="dock-window-1/0.25.1440.802@0.25.1440.802" timestamp="1621384801738" />
     <state x="720" y="26" width="720" height="803" key="dock-window-1/0.25.1440.804@0.25.1440.804" timestamp="1620818789168" />
     <state x="0" y="26" width="720" height="803" key="dock-window-2" timestamp="1620822554452">
       <screen x="0" y="25" width="1440" height="804" />
     </state>
     <state x="0" y="26" width="720" height="803" key="dock-window-2/0.25.1440.804@0.25.1440.804" timestamp="1620822554452" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Qlearning.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="self.action" language="Python" />
+        <watch expression="target_platform" language="Python" />
+      </configuration>
+    </watches-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/jump1_0$main.coverage" NAME="main Coverage Results" MODIFIED="1620366928793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/jump1_0$jump1_0.coverage" NAME="main Coverage Results" MODIFIED="1620065113273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/jump1_0$otherVersion.coverage" NAME="otherVersion Coverage Results" MODIFIED="1620830012586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/jump1_0$otherVersion.coverage" NAME="otherVersion Coverage Results" MODIFIED="1621407155357" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
