@@ -1,3 +1,4 @@
+import os
 import random as ra
 import json
 
@@ -12,29 +13,30 @@ class Q_model:
     # 记录上一个状态
     last_state = [0, 0, 0]
     # 学习率
-    learning_rate = 1
+    learning_rate = 0.8
     # 随机概率
     random = 1
 
     # 预测下一个状态
+    # 传入的是平台
     def predict(self, state):
         self.last_state = state
         # 平台类型
-        i = state[0]
+        i = state.kind()
         # 平台的y距离
-        j = state[1]
+        j = state.posY()
         # 平台的x距离
-        k = state[2]
+        k = state.posY()
 
         #  处理已经见过的平台
-        if i in self.action:
+        if state.kind() in self.action:
             # a为平台类型
 
             # 处理该平台下的y距离
-            if j in self.action[i]:
-                b = self.action[i]
+            if state.posY() in self.action[state.kind()]:
                 # 处理该该平台下y距离和x距离
-                if k in b[j]:
+                if state.posX() in self.action[state.kind()][state.posY()]:
+
                     return self.action[i][j][k]
                 else:
                     # 新的x距离 添加随机值
@@ -65,13 +67,17 @@ class Q_model:
 
         if self.action[i][j][k] > 0:
             positive = 1
+
         self.action[i][j][k] += self.learning_rate * amount
+
         # 随机执行
         if self.action[i][j][k] == 0 and positive == 1:
             self.action[i][j][k] -= 1
 
+    # explored 也要保存
     # 保存QTable 有问题, json可能会有重复的键
     def saveTable(self):
+        # if os.path.exists('QTable.json') is False:
         f = open('QTable.json', 'w')
         json.dump(self.action, f)
         f.close()
@@ -89,7 +95,7 @@ brain = Q_model()
 # 目标平台的索引
 previous_score = 0
 isFirst = True
-target_platform = -1
+target_platform = None
 states = {}
 previous_player_height = 0
 scale_reward_pos = 1 / 75
@@ -108,54 +114,55 @@ def decide(platforms, player, score, previous_collision, counter=1):
     global states
     global target_platform
     global previous_player_height
-    if counter > 100 and counter % 1000 == 0:
-        print("次数达1000次, 保存QTable")
+    if counter == 10000:
+        print("10000, 自动退出, 保存QTable")
         brain.saveTable()
+        exit(0)
 
-    if target_platform >= 0 and previous_score >= 0 and isFirst is False:
-        # print("target: " + str(target_platform) + " now: " + str(previous_collision))
+    if target_platform is not None and previous_score is not None and isFirst is False:
         if player.dead:
             scale_death = 1 + score / 2000
             brain.reward(-100 * scale_death)
             previous_score = 0
-            target_platform = -1
+            target_platform = None
             isFirst = True
-            # 重置游戏
-            return
         else:
             # 防止越跳越低
-            if previous_collision != target_platform:
-                # state[target_platform][1] 获取target_platform的高度,
-                if len(states) >= 2 and target_platform < len(states) and previous_collision < len(states) and states[target_platform][1] < states[previous_collision][1]:
+            if previous_collision.posX() != target_platform.posX() and previous_collision.posY() != target_platform.posY():
+                if target_platform.posY() < previous_collision.posY():
                     brain.reward(-20)
-            # 防止原地tp
-            else:
-                brain.reward(-10)
-                if len(states) >= 2 and previous_collision < len(states):
-                    brain.predict(states[previous_collision])
-                    r = score - previous_score - 20
-                    brain.reward(r)
+                # 防止原地tp
+                else:
+                    brain.reward(-10)
 
+            if previous_collision is not None:
+                brain.predict(previous_collision)
+                r = score - previous_score - 20
+                brain.reward(r)
+    # score要规定在100分之内, 而且要求player网上
+    # print("score: " + str(score))
     isFirst = False
     previous_score = score
     states = get_states(platforms, player)
 
-    predictions = {}
     maxRewardIndex = 0
+    maxReward = 0
     # 遍历平台 并从总挑选预测分数最高的平台
-    for zz in range(0, len(states)):
-        predictions[zz] = brain.predict(states[zz])
-        platforms[zz].predictScore = predictions[zz]
-        if predictions[zz] > predictions[maxRewardIndex]:
+    # 避免看的太远
+    # 索引有问题, target_platform仅仅只是states里的索引, 但states的索引会变化, 导致其他地方对应不上
+    for zz in range(0, min(len(states), 10)):
+        platforms[zz].predictScore = brain.predict(states[zz])
+
+        if maxReward < platforms[zz].predictScore:
+            maxReward = platforms[zz].predictScore
             maxRewardIndex = zz
 
     # 记录目录平台
-    target_platform = maxRewardIndex
+    target_platform = platforms[maxRewardIndex]
     # 调用预测函数, 将当前平台更新为上一个平台
-    brain.predict(states[target_platform])
+    brain.predict(target_platform)
     # 更新先前数据
     previous_player_height = player.rect.height
-    return False
 
 
 # 获取状态
@@ -168,7 +175,9 @@ def get_states(platforms, player):
     # 得到的是离图像最左开始算的x轴坐标, 即玩家的中心坐标
     for block in platforms:
         # 平台类型, 平台离玩家的y轴距离(高度差), 平台离玩家的x轴距离,
-        state.append([block.kind(), block.posY() - player.posY(), block.posX() - player.posX()])
+        state.append([block.kind(),
+                      round((block.posY() - player.posY())/yDivision * yDivision),
+                      abs(round((block.posX() - player.posX())/xDivision * xDivision))])
 
     return state
 
@@ -179,15 +188,16 @@ def get_states(platforms, player):
 def direction(platforms, player):
     dire = "none"
     try:
-        pX = platforms[target_platform].posX()
+        pX = target_platform.posX()
         # 防止player跳过平台
-        if pX < player.posX():
+        if pX + 15 < player.posX():
             dire = "left"
-        elif pX > player.posX():
+        elif pX + 15 > player.posX():
             dire = "right"
+
     except:
         pass
-
+    # print("dire: " + dire)
     return dire, target_platform
 
 # brain = Q_model()
