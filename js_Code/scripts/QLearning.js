@@ -94,7 +94,10 @@ function get_states() {
     platforms.forEach(function(p, i) {
         // 读取当前platforms的数据, 往state状态数组插入每一个平台的类型, 离主角的x距离, y距离
         // state.push([1 * (p.state || (p.type == 3)), (Math.round((p.y - player.y) / ydivision) * ydivision) + Math.abs(Math.round( (p.x - player.x) / 6))]);
-        state.push([1 * (p.state || (p.type == 3)) + 2 * (p.type == 2), (Math.round((p.y - player.y) / ydivision) * ydivision), Math.abs(Math.round( (p.x - player.x) / xdivision))*xdivision]);
+        state.push(
+            [1 * (p.state || (p.type == 3)) + 2 * (p.type == 2), 
+            (Math.round((p.y - player.y) / ydivision) * ydivision), 
+            Math.abs(Math.round( (p.x - player.x) / xdivision))*xdivision]);
         // multiplying by division rescales it so if we change division value later on, we can still use the brain created in this version
         // State = (Platform breakable, Y distance to platform)
     });

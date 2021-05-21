@@ -22,21 +22,20 @@ class Q_model:
     def predict(self, state):
         self.last_state = state
         # 平台类型
-        i = state.kind()
+        i = state[0]
         # 平台的y距离
-        j = state.posY()
+        j = state[1]
         # 平台的x距离
-        k = state.posY()
+        k = state[2]
 
         #  处理已经见过的平台
-        if state.kind() in self.action:
-            # a为平台类型
-
+        if i in self.action:
             # 处理该平台下的y距离
-            if state.posY() in self.action[state.kind()]:
+            if j in self.action[i]:
+                b = self.action[i]
                 # 处理该该平台下y距离和x距离
-                if state.posX() in self.action[state.kind()][state.posY()]:
-
+                if k in b[j]:
+                    # print("i: " + str(i) + " j:" + str(j) + " k: " + str(k) + "i got it")
                     return self.action[i][j][k]
                 else:
                     # 新的x距离 添加随机值
@@ -119,7 +118,7 @@ def decide(platforms, player, score, previous_collision, counter=1):
         brain.saveTable()
         exit(0)
 
-    if target_platform is not None and previous_score is not None and isFirst is False:
+    if target_platform is not None and previous_collision is not None and isFirst is False:
         if player.dead:
             scale_death = 1 + score / 2000
             brain.reward(-100 * scale_death)
@@ -128,7 +127,7 @@ def decide(platforms, player, score, previous_collision, counter=1):
             isFirst = True
         else:
             # 防止越跳越低
-            if previous_collision.posX() != target_platform.posX() and previous_collision.posY() != target_platform.posY():
+            if previous_collision != target_platform:
                 if target_platform.posY() < previous_collision.posY():
                     brain.reward(-20)
                 # 防止原地tp
@@ -136,22 +135,23 @@ def decide(platforms, player, score, previous_collision, counter=1):
                     brain.reward(-10)
 
             if previous_collision is not None:
-                brain.predict(previous_collision)
+                brain.predict(get_states(previous_collision, player))
                 r = score - previous_score - 20
                 brain.reward(r)
     # score要规定在100分之内, 而且要求player网上
     # print("score: " + str(score))
     isFirst = False
     previous_score = score
-    states = get_states(platforms, player)
+    # states = get_states(platforms, player)
 
     maxRewardIndex = 0
     maxReward = 0
     # 遍历平台 并从总挑选预测分数最高的平台
     # 避免看的太远
     # 索引有问题, target_platform仅仅只是states里的索引, 但states的索引会变化, 导致其他地方对应不上
-    for zz in range(0, min(len(states), 10)):
-        platforms[zz].predictScore = brain.predict(states[zz])
+    # 修改
+    for zz in range(0, min(len(platforms), 10)):
+        platforms[zz].predictScore = brain.predict(get_states(platforms[zz], player))
 
         if maxReward < platforms[zz].predictScore:
             maxReward = platforms[zz].predictScore
@@ -160,24 +160,18 @@ def decide(platforms, player, score, previous_collision, counter=1):
     # 记录目录平台
     target_platform = platforms[maxRewardIndex]
     # 调用预测函数, 将当前平台更新为上一个平台
-    brain.predict(target_platform)
+    brain.predict(get_states(target_platform, player))
     # 更新先前数据
     previous_player_height = player.rect.height
 
 
 # 获取状态
-def get_states(platforms, player):
+def get_states(platform, player):
     # 用于缩小数据范围
     yDivision = 10
     xDivision = 40
-    state = []
-
-    # 得到的是离图像最左开始算的x轴坐标, 即玩家的中心坐标
-    for block in platforms:
-        # 平台类型, 平台离玩家的y轴距离(高度差), 平台离玩家的x轴距离,
-        state.append([block.kind(),
-                      round((block.posY() - player.posY())/yDivision * yDivision),
-                      abs(round((block.posX() - player.posX())/xDivision * xDivision))])
+    state = [platform.kind(), round((platform.posY() - player.posY()) / yDivision * yDivision), abs(round((platform.posX() - player.posX()) / xDivision * xDivision))]
+    # 平台类型, 平台离玩家的y轴距离(高度差), 平台离玩家的x轴距离,
 
     return state
 
@@ -190,9 +184,9 @@ def direction(platforms, player):
     try:
         pX = target_platform.posX()
         # 防止player跳过平台
-        if pX + 15 < player.posX():
+        if pX + 5 < player.posX():
             dire = "left"
-        elif pX + 15 > player.posX():
+        elif pX + 5 > player.posX():
             dire = "right"
 
     except:
