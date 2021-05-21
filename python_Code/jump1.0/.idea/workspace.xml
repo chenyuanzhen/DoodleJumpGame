@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91fa5638-7bd5-4912-a374-c4cbe4d0baf6" name="默认更改列表" comment="">
+      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Qlearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Qlearning.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/otherVersion.py" beforeDir="false" afterPath="$PROJECT_DIR$/otherVersion.py" afterDir="false" />
@@ -114,6 +115,9 @@
       <workItem from="1620821999774" duration="4304000" />
       <workItem from="1621384300512" duration="8771000" />
       <workItem from="1621414571889" duration="12616000" />
+      <workItem from="1621433596444" duration="5870000" />
+      <workItem from="1621479718266" duration="542000" />
+      <workItem from="1621566121383" duration="8376000" />
     </task>
     <servers />
   </component>
@@ -121,54 +125,55 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621429664800">
-      <screen x="0" y="0" width="1440" height="900" />
-    </state>
-    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1621429664800" />
-    <state width="1398" height="174" key="GridCell.Tab.0.bottom" timestamp="1621430469735">
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1621568365482">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
-    <state width="1398" height="196" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621429371038" />
-    <state width="1398" height="174" key="GridCell.Tab.0.bottom/0.25.1440.802@0.25.1440.802" timestamp="1621430469735" />
+    <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1621433953263" />
+    <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1440.802@0.25.1440.802" timestamp="1621568365482" />
+    <state width="678" height="130" key="GridCell.Tab.0.bottom" timestamp="1621581276438">
+      <screen x="0" y="25" width="1440" height="802" />
+    </state>
+    <state width="1398" height="68" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621571135981" />
+    <state width="678" height="130" key="GridCell.Tab.0.bottom/0.25.1440.802@0.25.1440.802" timestamp="1621581276438" />
     <state width="1398" height="295" key="GridCell.Tab.0.bottom/0.25.1440.804@0.25.1440.804" timestamp="1620830247580" />
-    <state width="1398" height="174" key="GridCell.Tab.0.center" timestamp="1621430469735">
+    <state width="678" height="130" key="GridCell.Tab.0.center" timestamp="1621581276437">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
-    <state width="1398" height="196" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1621429371036" />
-    <state width="1398" height="174" key="GridCell.Tab.0.center/0.25.1440.802@0.25.1440.802" timestamp="1621430469735" />
+    <state width="1398" height="68" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1621571135980" />
+    <state width="678" height="130" key="GridCell.Tab.0.center/0.25.1440.802@0.25.1440.802" timestamp="1621581276437" />
     <state width="1398" height="295" key="GridCell.Tab.0.center/0.25.1440.804@0.25.1440.804" timestamp="1620830247579" />
-    <state width="1398" height="174" key="GridCell.Tab.0.left" timestamp="1621430469734">
+    <state width="678" height="130" key="GridCell.Tab.0.left" timestamp="1621581276437">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
-    <state width="1398" height="196" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1621429371036" />
-    <state width="1398" height="174" key="GridCell.Tab.0.left/0.25.1440.802@0.25.1440.802" timestamp="1621430469734" />
+    <state width="1398" height="68" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1621571135979" />
+    <state width="678" height="130" key="GridCell.Tab.0.left/0.25.1440.802@0.25.1440.802" timestamp="1621581276437" />
     <state width="1398" height="295" key="GridCell.Tab.0.left/0.25.1440.804@0.25.1440.804" timestamp="1620830247579" />
-    <state width="1398" height="174" key="GridCell.Tab.0.right" timestamp="1621430469735">
+    <state width="678" height="130" key="GridCell.Tab.0.right" timestamp="1621581276438">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
-    <state width="1398" height="196" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1621429371037" />
-    <state width="1398" height="174" key="GridCell.Tab.0.right/0.25.1440.802@0.25.1440.802" timestamp="1621430469735" />
+    <state width="1398" height="68" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1621571135981" />
+    <state width="678" height="130" key="GridCell.Tab.0.right/0.25.1440.802@0.25.1440.802" timestamp="1621581276438" />
     <state width="1398" height="295" key="GridCell.Tab.0.right/0.25.1440.804@0.25.1440.804" timestamp="1620830247580" />
-    <state width="1398" height="174" key="GridCell.Tab.1.bottom" timestamp="1621430469736">
+    <state width="678" height="142" key="GridCell.Tab.1.bottom" timestamp="1621568317517">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state width="1398" height="174" key="GridCell.Tab.1.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621428454518" />
-    <state width="1398" height="174" key="GridCell.Tab.1.bottom/0.25.1440.802@0.25.1440.802" timestamp="1621430469736" />
-    <state width="1398" height="174" key="GridCell.Tab.1.center" timestamp="1621430469735">
+    <state width="678" height="142" key="GridCell.Tab.1.bottom/0.25.1440.802@0.25.1440.802" timestamp="1621568317517" />
+    <state width="678" height="142" key="GridCell.Tab.1.center" timestamp="1621568317516">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state width="1398" height="174" key="GridCell.Tab.1.center/0.0.1440.900@0.0.1440.900" timestamp="1621428454517" />
-    <state width="1398" height="174" key="GridCell.Tab.1.center/0.25.1440.802@0.25.1440.802" timestamp="1621430469735" />
-    <state width="1398" height="174" key="GridCell.Tab.1.left" timestamp="1621430469735">
+    <state width="678" height="142" key="GridCell.Tab.1.center/0.25.1440.802@0.25.1440.802" timestamp="1621568317516" />
+    <state width="678" height="142" key="GridCell.Tab.1.left" timestamp="1621568317516">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state width="1398" height="174" key="GridCell.Tab.1.left/0.0.1440.900@0.0.1440.900" timestamp="1621428454517" />
-    <state width="1398" height="174" key="GridCell.Tab.1.left/0.25.1440.802@0.25.1440.802" timestamp="1621430469735" />
-    <state width="1398" height="174" key="GridCell.Tab.1.right" timestamp="1621430469735">
+    <state width="678" height="142" key="GridCell.Tab.1.left/0.25.1440.802@0.25.1440.802" timestamp="1621568317516" />
+    <state width="678" height="142" key="GridCell.Tab.1.right" timestamp="1621568317516">
       <screen x="0" y="25" width="1440" height="802" />
     </state>
     <state width="1398" height="174" key="GridCell.Tab.1.right/0.0.1440.900@0.0.1440.900" timestamp="1621428454518" />
-    <state width="1398" height="174" key="GridCell.Tab.1.right/0.25.1440.802@0.25.1440.802" timestamp="1621430469735" />
+    <state width="678" height="142" key="GridCell.Tab.1.right/0.25.1440.802@0.25.1440.802" timestamp="1621568317516" />
     <state x="0" y="43" key="SettingsEditor" timestamp="1620829693949">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -189,6 +194,15 @@
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup/0.0.1440.900@0.0.1440.900" timestamp="1621421009203" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Qlearning.py</url>
+          <line>153</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="target_platform" language="Python" />
@@ -200,6 +214,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/jump1_0$main.coverage" NAME="main Coverage Results" MODIFIED="1620366928793" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/jump1_0$jump1_0.coverage" NAME="main Coverage Results" MODIFIED="1620065113273" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/jump1_0$otherVersion.coverage" NAME="otherVersion Coverage Results" MODIFIED="1621429371027" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/jump1_0$otherVersion.coverage" NAME="otherVersion Coverage Results" MODIFIED="1621581276428" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

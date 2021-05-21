@@ -151,6 +151,7 @@ class Camera(object):
 class Block(pygame.sprite.Sprite):
     predictScore = 0
     color = None
+
     def kind(self):
         # kind=0 表示普通平台
         # kind=1 表示只能跳一次的, 然后消失
@@ -165,7 +166,7 @@ class Block(pygame.sprite.Sprite):
         return self.rect.left + self.rect.width / 2
 
     def posY(self):
-        return self.rect.top + self.rect.height / 2
+        return self.rect.top + self.rect.height
 
     def __init__(self, x, y, w, h, color, breackable=False, canJump=True):
         self.color = color
@@ -187,6 +188,8 @@ class Bonus(pygame.sprite.Sprite):
         self.addForce = -addForce
         self.duration = duration
 
+
+previous_collision = -1
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, sx, sy, w, h, jumpforce, color, gravity=True, gravVelocity=0.5, mass=1):
@@ -216,23 +219,30 @@ class Player(pygame.sprite.Sprite):
         return self.rect.left + self.rect.width / 2
 
     def posY(self):
-        return self.rect.top + self.rect.height / 2
+        return self.rect.top + self.rect.height
 
     def collide(self, sx, sy, colliders, bonuses):
+        global previous_collision
+        collision_index = 0
         for p in colliders:
+
             if pygame.sprite.collide_rect(self, p):
                 # if sx > 0:
                 #    self.rect.right = p.rect.left
                 # if sx < 0:
                 #    self.rect.left = p.rect.right
+                previous_collision = collision_index
                 if sy > -0.5:
                     if p.breackable:
-                        colliders.remove(p)
+                        # p.canJump = False
+                        pass
+                        # 不可以移除, 会丢失索引对应性, 可改颜色
+                        # colliders.remove(p)
                     if p.canJump:
                         self.rect.bottom = p.rect.top
                         self.isGrounded = True
                         self.sy = 0
-
+            collision_index += 1
             # if sy < 0:
             #    self.sy = 0.1
             #    self.rect.top = p.rect.bottom
@@ -355,6 +365,7 @@ def eventManager(event, player):
             player.events[0] = 0
         if event.key == K_SPACE:
             player.events[2] = 1
+
         if event.key == K_v:
             if isShow is True:
                 isShow = False
@@ -368,13 +379,12 @@ def eventManager(event, player):
             player.events[1] = 0
 
 
-previous_collision = -2
-lastPlayerSy = -10
-
 loopGame = True
-
 maxScore = 0
 counter = 0
+# 保存玩家目前最低的平台高度
+lastPlatformY = player.posY()
+lastPlatformY2 = 20000
 # 装载qtalbe
 ql.loadTable()
 # Main Game Loop
@@ -384,22 +394,36 @@ while loopGame:
     world.update(camera)
 
     window.fill(COLORS[13])
+    index = 0
     for b in world.platforms:
         window.blit(b.image, camera.apply(b))
-        # 用纯色填充, 防止字体重复
+        # 用纯色填充, 防止字体重叠
         b.image.fill(b.color)
-        label = FONTS[2].render(str(b.predictScore), False, COLORS[1])
+        # text(b.posX(), b.posY(), FONTS[2], COLORS[1], "1", window)
+        label = FONTS[2].render(str(index)+ " " + str(b.predictScore), False, COLORS[1])
         b.image.blit(label, (20, 0))
+        index += 1
 
     for b in world.bonuses:
         window.blit(b.image, camera.apply(b))
 
-    # print(str(lastPlayerSy) + " : " + str(player.sy))
-    # 在玩家当前y轴最高时, 做预判
-    if lastPlayerSy < 0 and player.sy == 0:
-        ql.decide(world.platforms, player, player.score, previous_collision, counter)
+    # 在玩家当前y轴最高时, 做预判  player.posY()是反的, 越上越小
+    if lastPlatformY >= player.posY() and player.sy == 0:
+        if abs(lastPlatformY) + abs(lastPlatformY2) != 0:
+            score = -(lastPlatformY / (abs(lastPlatformY) + abs(lastPlatformY2)) - lastPlatformY2 / (abs(lastPlatformY) + abs(lastPlatformY2))) * 100
+        else:
+            score = 0
+        # 暂停使用上述score分数, 当前以玩家跳跃分数作为基准
 
-    lastPlayerSy = player.sy
+        ql.decide(world.platforms, player, player.score, previous_collision, counter)
+        lastPlatformY2 = lastPlatformY
+        lastPlatformY = player.posY()
+
+    # 当玩家往下跳时
+    elif player.sy == 0:
+        lastPlatformY2 = lastPlatformY
+        lastPlatformY = player.posY()
+
     for event in pygame.event.get():
         eventManager(event, player)
 
@@ -414,30 +438,32 @@ while loopGame:
     # 获取去达最佳平台的方向
     dire, target_platform = ql.direction(world.platforms, player)
 
+    # print("previous " + str(previous_collision) + " aim: " + str(target_platform))
     # 需要知道当前要跳往的平台
     if dire == "left":
-        player.sx = -1.7
+        player.sx = -1.5
         player.events[0] = 1
         player.events[1] = 0
-        # 当到达目标平台时, 停止移动
-        if world.platforms[target_platform].posX() <= player.posX() <= world.platforms[target_platform].posX() + \
-                world.platforms[target_platform].rect.width:
+        # # 当到达目标平台时, 停止移动
+        if target_platform.posX() <= player.posX() <= target_platform.posX() + \
+                target_platform.rect.width:
             player.events[0] = 0
             player.events[1] = 0
             player.sx = 0
-            previous_collision = target_platform
 
     elif dire == "right":
-        player.sx = 1.7
-        player.events[1] = 1
+        player.sx = 1.5
         player.events[0] = 0
-        # 当到达目标平台时,停止移动
-        if world.platforms[target_platform].posX() <= player.posX() <= world.platforms[target_platform].posX() + \
-                world.platforms[target_platform].rect.width:
+        player.events[1] = 1
+        # # 当到达目标平台时,停止移动
+        if target_platform.rect.x <= player.posX() <= target_platform.rect.x + target_platform.rect.width:
             player.events[0] = 0
             player.events[1] = 0
             player.sx = 0
-            previous_collision = target_platform
+
+    else:
+        player.events[0] = 0
+        player.events[1] = 0
 
     # 重置循环
     if player.dead:
@@ -445,20 +471,22 @@ while loopGame:
             maxScore = player.score
             print(maxScore)
         counter += 1
-        if counter % 100 == 0:
+        if counter % 1000 == 0:
             print("counter" + str(counter))
 
         player.sy = 0
         # 只能设置为-1或者0 防止发生list超出错误
         previous_collision = -1
-        lastPlayerSy = -10
         player.dead = False
         resetGame()
+        lastPlatformY = player.posY()
+        lastPlatformY2 = 20000
 
     if isShow:
         pygame.display.update()
         FPS = 60
     else:
-        FPS = 5000
+        pygame.display.update()
+        FPS = 10
 
     clock.tick(FPS)
