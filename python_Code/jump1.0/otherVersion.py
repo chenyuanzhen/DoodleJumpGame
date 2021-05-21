@@ -189,7 +189,7 @@ class Bonus(pygame.sprite.Sprite):
         self.duration = duration
 
 
-previous_collision = -1
+previous_collision = None
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, x, y, sx, sy, w, h, jumpforce, color, gravity=True, gravVelocity=0.5, mass=1):
@@ -225,19 +225,15 @@ class Player(pygame.sprite.Sprite):
         global previous_collision
         collision_index = 0
         for p in colliders:
-
             if pygame.sprite.collide_rect(self, p):
                 # if sx > 0:
                 #    self.rect.right = p.rect.left
                 # if sx < 0:
                 #    self.rect.left = p.rect.right
-                previous_collision = collision_index
+                previous_collision = p
                 if sy > -0.5:
                     if p.breackable:
-                        # p.canJump = False
-                        pass
-                        # 不可以移除, 会丢失索引对应性, 可改颜色
-                        # colliders.remove(p)
+                        colliders.remove(p)
                     if p.canJump:
                         self.rect.bottom = p.rect.top
                         self.isGrounded = True
@@ -441,7 +437,7 @@ while loopGame:
     # print("previous " + str(previous_collision) + " aim: " + str(target_platform))
     # 需要知道当前要跳往的平台
     if dire == "left":
-        player.sx = -1.5
+        player.sx = -5
         player.events[0] = 1
         player.events[1] = 0
         # # 当到达目标平台时, 停止移动
@@ -452,7 +448,7 @@ while loopGame:
             player.sx = 0
 
     elif dire == "right":
-        player.sx = 1.5
+        player.sx = 5
         player.events[0] = 0
         player.events[1] = 1
         # # 当到达目标平台时,停止移动
@@ -471,12 +467,12 @@ while loopGame:
             maxScore = player.score
             print(maxScore)
         counter += 1
-        if counter % 1000 == 0:
+        if counter % 500 == 0:
             print("counter" + str(counter))
 
         player.sy = 0
         # 只能设置为-1或者0 防止发生list超出错误
-        previous_collision = -1
+        previous_collision = None
         player.dead = False
         resetGame()
         lastPlatformY = player.posY()
@@ -486,7 +482,7 @@ while loopGame:
         pygame.display.update()
         FPS = 60
     else:
-        pygame.display.update()
-        FPS = 10
+        # pygame.display.update()
+        FPS = 1000
 
     clock.tick(FPS)
