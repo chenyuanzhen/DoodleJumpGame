@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cbe26f78-7770-462e-8249-13409eff8586" name="默认更改列表" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="cbe26f78-7770-462e-8249-13409eff8586" name="默认更改列表" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Qlearning.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../PythonGame/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jump2.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jump2.0.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/block.py" beforeDir="false" afterPath="$PROJECT_DIR$/block.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/player.py" beforeDir="false" afterPath="$PROJECT_DIR$/player.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/world.py" beforeDir="false" afterPath="$PROJECT_DIR$/world.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../python_Code/jump1.0/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,23 +29,31 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JupyterTrust" id="938e5213-784a-4c1c-b11c-9483650fc51a" />
   <component name="ProjectId" id="1scHFTEdI9Ix9equpy6vCseEAfr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/main.py" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
@@ -41,7 +63,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="D:\Anaconda3\python.exe" />
+      <option name="SDK_HOME" value="$USER_HOME$/Projects/PycharmProjects/ReForceStudy/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -57,16 +79,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="ServiceViewManager">
-    <option name="allServicesViewState">
-      <serviceView>
-        <treeState>
-          <expand />
-          <select />
-        </treeState>
-      </serviceView>
-    </option>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -85,13 +98,63 @@
       <workItem from="1621233026409" duration="6012000" />
       <workItem from="1621576694873" duration="5373000" />
       <workItem from="1621582403690" duration="162000" />
+      <workItem from="1621869033992" duration="4179000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621869078563">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="184" y="109" width="1071" height="706" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1621869078563" />
+    <state width="678" height="239" key="GridCell.Tab.0.bottom" timestamp="1621919282614">
+      <screen x="0" y="25" width="1440" height="804" />
+    </state>
+    <state width="1398" height="240" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621869704649" />
+    <state width="678" height="239" key="GridCell.Tab.0.bottom/0.25.1440.798@0.25.1440.798" timestamp="1621869862770" />
+    <state width="678" height="239" key="GridCell.Tab.0.bottom/0.25.1440.801@0.25.1440.801" timestamp="1621919233480" />
+    <state width="678" height="239" key="GridCell.Tab.0.bottom/0.25.1440.804@0.25.1440.804" timestamp="1621919282614" />
+    <state width="678" height="239" key="GridCell.Tab.0.center" timestamp="1621919282613">
+      <screen x="0" y="25" width="1440" height="804" />
+    </state>
+    <state width="1398" height="240" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1621869704648" />
+    <state width="678" height="239" key="GridCell.Tab.0.center/0.25.1440.798@0.25.1440.798" timestamp="1621869862769" />
+    <state width="678" height="239" key="GridCell.Tab.0.center/0.25.1440.801@0.25.1440.801" timestamp="1621919233480" />
+    <state width="678" height="239" key="GridCell.Tab.0.center/0.25.1440.804@0.25.1440.804" timestamp="1621919282613" />
+    <state width="678" height="239" key="GridCell.Tab.0.left" timestamp="1621919282613">
+      <screen x="0" y="25" width="1440" height="804" />
+    </state>
+    <state width="1398" height="240" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1621869704648" />
+    <state width="678" height="239" key="GridCell.Tab.0.left/0.25.1440.798@0.25.1440.798" timestamp="1621869862768" />
+    <state width="678" height="239" key="GridCell.Tab.0.left/0.25.1440.801@0.25.1440.801" timestamp="1621919233479" />
+    <state width="678" height="239" key="GridCell.Tab.0.left/0.25.1440.804@0.25.1440.804" timestamp="1621919282613" />
+    <state width="678" height="239" key="GridCell.Tab.0.right" timestamp="1621919282613">
+      <screen x="0" y="25" width="1440" height="804" />
+    </state>
+    <state width="1398" height="240" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1621869704649" />
+    <state width="678" height="239" key="GridCell.Tab.0.right/0.25.1440.798@0.25.1440.798" timestamp="1621869862770" />
+    <state width="678" height="239" key="GridCell.Tab.0.right/0.25.1440.801@0.25.1440.801" timestamp="1621919233480" />
+    <state width="678" height="239" key="GridCell.Tab.0.right/0.25.1440.804@0.25.1440.804" timestamp="1621919282613" />
+    <state x="229" y="86" key="SettingsEditor" timestamp="1621869110322">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="229" y="86" key="SettingsEditor/0.0.1440.900@0.0.1440.900" timestamp="1621869110322" />
+    <state x="720" y="26" width="720" height="800" key="dock-window-1" timestamp="1621917545381">
+      <screen x="0" y="25" width="1440" height="801" />
+    </state>
+    <state x="720" y="26" width="720" height="800" key="dock-window-1/0.25.1440.801@0.25.1440.801" timestamp="1621917545381" />
+    <state x="25" y="150" width="670" height="676" key="search.everywhere.popup" timestamp="1621918451352">
+      <screen x="0" y="25" width="1440" height="801" />
+    </state>
+    <state x="25" y="150" width="670" height="676" key="search.everywhere.popup/0.25.1440.801@0.25.1440.801" timestamp="1621918451352" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/jump2_0$main.coverage" NAME="main Coverage Results" MODIFIED="1621582012098" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/jump2_0$main.coverage" NAME="main Coverage Results" MODIFIED="1621919270564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
