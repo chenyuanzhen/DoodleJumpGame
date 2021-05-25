@@ -49,13 +49,11 @@ def main():
     maxScore = 0
     # keyState[0]表示加速, [1]表示减速, [2]表示保存QTable
     keyState = [False, False, False]
-    # 帧率
-    FPS = 60
     # 记录总共玩的局数
-    counter = 0
+    counter = 1
+
     # Main Game Loop
     while loopGame:
-
         taskManager(player)
         camera.update(player)
         world.update(camera)
@@ -65,17 +63,6 @@ def main():
 
         for event in pygame.event.get():
             eventManager(event, player, world, camera, keyState)
-
-        # # 修改游戏环境
-        # if keyState[0]:
-        #     FPS = 100000
-        # elif keyState[1]:
-        #     pygame.display.update()
-        #     FPS = 10
-        # else:
-        #     pygame.display.update()
-        #     FPS = 60
-
         # 保存QTable
         if keyState[2]:
             ql.saveTable()
@@ -153,8 +140,11 @@ def main():
                 maxScore = player.score
                 print("maxScore: " + str(maxScore))
             counter += 1
-            if counter % 500 == 0:
+            if counter % 50 == 0:
                 print("counter" + str(counter))
+                print("序列化QTable")
+                ql.saveTable()
+                # exit(0)
 
             player.sy = 0
             # 只能设置为-1或者0 防止发生list超出错误
@@ -162,5 +152,17 @@ def main():
             player.dead = False
             resetGame(player, world, camera)
 
-        pygame.display.update()
+        # 修改游戏环境
+        # 加速
+        if keyState[0]:
+            FPS = 500000
+        # 放慢
+        elif keyState[1]:
+            pygame.display.update()
+            FPS = 10
+        # 正常
+        else:
+            pygame.display.update()
+            FPS = 60
+
         clock.tick(FPS)

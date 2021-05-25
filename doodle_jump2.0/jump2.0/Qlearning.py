@@ -1,5 +1,6 @@
 import random as ra
 import json
+import pickle
 
 
 class Q_model:
@@ -71,27 +72,38 @@ class Q_model:
         if self.action[i][j][k] == 0 and positive == 1:
             self.action[i][j][k] -= 1
 
-        # print("last_state y: " + str(j) + " x " + str(k) + " score: " + str(self.action[i][j][k]))
 
-    # explored 也要保存
-    # 保存QTable 有问题, json可能会有重复的键
-    def saveTable(self):
-        # if os.path.exists('LastQTable.json') is False:
-        f = open('QTable.json', 'w')
-        json.dump(self.action, f)
-        f.close()
-
-    def loadTable(self):
-        try:
-            print("装载qtable")
-            f = open('QTable.json', 'r')
-            self.action = json.load(f)
-            f.close()
-        except IOError:
-            print("文件不存在或者文件无权限")
+# 采用序列化
+def saveTable():
+    with open('QTable.txt', 'wb') as f:
+        pickle.dump(brain, f)
+    # 注意 json只能读取为字符型, 而self.action字典里的键值都是浮点型,
+    with open('Qdict.json', 'w') as t:
+        json.dump(brain.action, t)
+    with open('Qdict.txt', 'wb') as q:
+        pickle.dump(brain.action, q)
 
 
-brain = Q_model()
+brain = None
+
+try:
+    f = open('QTable.txt', 'rb')
+    print("装载qtable")
+    brain = pickle.load(f)
+    f.close()
+except EOFError:
+    print("文件不存在或者文件无权限, 需要重新训练")
+    brain = Q_model()
+
+try:
+    # 不要装json, 因为json读取字典中都是字符, 而不是整形, 但self.action中需要是整型
+    table = open('Qdict.txt', 'rb')
+    brain.action = pickle.load(table)
+    table.close()
+except IOError or EOFError or TypeError or FileNotFoundError:
+    print("文件不存在或者文件无权限, 需要重新训练")
+    brain = Q_model()
+
 # 目标平台的索引
 previous_score = 0
 isFirst = True
@@ -101,13 +113,6 @@ previous_player_height = 0
 scale_reward_pos = 1 / 75
 
 
-def saveTable():
-    brain.saveTable()
-
-
-# 装载Qtable
-def loadTable():
-    brain.loadTable()
 
 
 lastTarget = None
@@ -123,16 +128,11 @@ def decide(platforms, player, score, previous_collision, counter=1, isBounce=Fal
     global target_platform
     global previous_player_height
     if isBounce is not True:
-        if counter % 500 == 0 and counter != 0:
-            print("探索的状态: " + str(brain.explored))
-            print("局数到达500, 自动保存QTable")
-            brain.saveTable()
-            # exit(0)
 
         if target_platform is not None and previous_collision is not None and isFirst is False:
             if player.dead:
                 scale_death = 1 + score / 2000
-                brain.reward(-100 * scale_death)
+                brain.reward(-500 * scale_death)
                 previous_score = 0
                 target_platform = None
                 isFirst = True
@@ -163,7 +163,7 @@ def decide(platforms, player, score, previous_collision, counter=1, isBounce=Fal
     # 遍历平台 并从总挑选预测分数最高的平台
     for zz in range(0, len(platforms)):
         # # 限定检查平台范围
-        if platforms[zz].posY() + 500 <= player.posY():
+        if platforms[zz].posY() + 500 <= player.posY() <= platforms[zz].posY() - 500:
             continue
         platforms[zz].predictScore = brain.predict(states[platforms[zz]])
 
@@ -183,8 +183,12 @@ def decide(platforms, player, score, previous_collision, counter=1, isBounce=Fal
 # 获取状态
 def get_states(platforms, player):
     state = {}
+    # 设置y轴距离, 简化状态空间
     yDivision = 20
+    # 设置x轴距离, 简化状态空间
     xDivision = 60
+    # 建议设置 yDivision = 20, xDivision = 60 练习局数500不到, 就可以很好的预测.
+    # 如果都设置为1, 状态空间太大, 练习时间估计超1小时.
     for platform in platforms:
         state[platform] = [platform.kind(), round((platform.posY() - player.posY()) / yDivision),
                            abs(round((platform.posX() - player.posX()) / xDivision))]
