@@ -2,8 +2,10 @@
     file name: function.py
     effect:
 """
+import sys
 
-from function import *
+from pygame.constants import *
+from pygame.rect import Rect
 from settings import *
 
 
@@ -16,10 +18,10 @@ def simple_camera(camera, target_rect):
 
 
 # Functions
-def text(x, y, font, color, text, surface):
+def text(x, y, font, color, inText, surface):
 
-    text = font.render(text, True, color)
-    surface.blit(text, (x, y))
+    inText = font.render(inText, True, color)
+    surface.blit(inText, (x, y))
 
 
 def taskManager(player):
@@ -47,7 +49,8 @@ def taskManager(player):
         player.sy = -player.jumpforce
 
 
-def eventManager(event, player):
+# keyState[0]表示加速, [1]表示减速, [2]表示保存QTable
+def eventManager(event, player, world, camera, keyState=None):
 
     # 退出游戏事件
     if event.type == QUIT:
@@ -77,6 +80,17 @@ def eventManager(event, player):
 
         if event.key == K_SPACE:
             player.events[2] = 1
+        # 加速训练
+        if event.key == K_v:
+            if keyState[0] is True:
+                keyState[0] = False
+        # 减缓速度
+        if event.key == K_s:
+            if keyState[1] is True:
+                keyState[1] = False
+        # 保存
+        if event.key == K_t:
+            keyState[2] = True
 
     elif event.type == KEYUP:
 
