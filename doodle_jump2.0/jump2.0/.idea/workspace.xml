@@ -2,93 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cbe26f78-7770-462e-8249-13409eff8586" name="默认更改列表" comment="">
-      <change afterPath="$PROJECT_DIR$/QTable.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Qdict.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Qdict.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Qlearning.py" beforeDir="false" afterPath="$PROJECT_DIR$/Qlearning.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/function.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/game.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/fonts/font.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/images/2WEhF.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/images/5BBsR.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/images/Y0BMP.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/paper.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/0_7-4-0-0_4-score.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/0_7-4-0-score.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/0_7-4-0_4-score.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/0_7-4-0_8-score.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/A0_7_R01_E00.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/A0_7_R100_E00_Var1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/A0_7_R4_E0_G0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/Explored_brain.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/FlappyBirdStateSet.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/Hyper-Param.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/Overnight_Alpha_0_7_-_Res_10_-_Explor_0_0_GRAPH.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/alpha0_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/alpha0_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/alpha0_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/alpha0_6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/alpha0_9.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/division_granularity.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/dj.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/learning_rate_table.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/main.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/main2_toc.tex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/packages/stj.sty" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/platform_overlap.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/random_pick.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/scoreperlife.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/vraag1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/x40y10rate1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/x80_y20_rate1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/report/x8_y2_rate1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/Charts.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/GameLogic.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/QLearning.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/canvasjs/canvasjs.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/canvasjs/instruction.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/canvasjs/jquery.canvasjs.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/canvasjs/license.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/canvasjs/source/canvasjs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/canvasjs/source/excanvas.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/canvasjs/source/jquery.canvasjs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/scripts/storage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../js_Code/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../origin_PythonGame/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/.idea/python_Code.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/.idea/jump1.0.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/Qlearning.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/end.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/function.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/graffiti.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/images/role.bmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/otherVersion.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/pedal.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/score.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/stats.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../python_Code/jump1.0/window.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/QTable.txt" beforeDir="false" afterPath="$PROJECT_DIR$/QTable.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Qdict.json" beforeDir="false" afterPath="$PROJECT_DIR$/Qdict.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Qdict.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Qdict.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/.idea/jump2.0.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/.idea/jump2.0.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/camera.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/camera.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/function.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/function.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../无QLearing版本/jump2.0/game.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +98,8 @@
       <workItem from="1621582403690" duration="162000" />
       <workItem from="1621869033992" duration="4179000" />
       <workItem from="1621932797851" duration="6283000" />
-      <workItem from="1621941506444" duration="155000" />
+      <workItem from="1621941506444" duration="414000" />
+      <workItem from="1622029164210" duration="4076000" />
     </task>
     <servers />
   </component>
@@ -194,35 +119,35 @@
     </state>
     <state x="458" y="201" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1440.900@0.0.1440.900" timestamp="1621938762864" />
     <state x="458" y="204" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1440.801@0.25.1440.801" timestamp="1621940494565" />
-    <state width="1398" height="343" key="GridCell.Tab.0.bottom" timestamp="1621941428537">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="194" key="GridCell.Tab.0.bottom" timestamp="1622038915673">
+      <screen x="0" y="25" width="1440" height="798" />
     </state>
-    <state width="1398" height="343" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1621941428537" />
-    <state width="678" height="117" key="GridCell.Tab.0.bottom/0.25.1440.798@0.25.1440.798" timestamp="1621933393923" />
+    <state width="1398" height="194" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1622031686218" />
+    <state width="1398" height="194" key="GridCell.Tab.0.bottom/0.25.1440.798@0.25.1440.798" timestamp="1622038915673" />
     <state width="865" height="199" key="GridCell.Tab.0.bottom/0.25.1440.799@0.25.1440.799" timestamp="1621938460230" />
     <state width="678" height="376" key="GridCell.Tab.0.bottom/0.25.1440.801@0.25.1440.801" timestamp="1621940782484" />
     <state width="678" height="163" key="GridCell.Tab.0.bottom/0.25.1440.804@0.25.1440.804" timestamp="1621939407480" />
-    <state width="1398" height="343" key="GridCell.Tab.0.center" timestamp="1621941428536">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="194" key="GridCell.Tab.0.center" timestamp="1622038915671">
+      <screen x="0" y="25" width="1440" height="798" />
     </state>
-    <state width="1398" height="343" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1621941428536" />
-    <state width="678" height="117" key="GridCell.Tab.0.center/0.25.1440.798@0.25.1440.798" timestamp="1621933393922" />
+    <state width="1398" height="194" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1622031686217" />
+    <state width="1398" height="194" key="GridCell.Tab.0.center/0.25.1440.798@0.25.1440.798" timestamp="1622038915671" />
     <state width="865" height="199" key="GridCell.Tab.0.center/0.25.1440.799@0.25.1440.799" timestamp="1621938460229" />
     <state width="678" height="376" key="GridCell.Tab.0.center/0.25.1440.801@0.25.1440.801" timestamp="1621940782484" />
     <state width="678" height="163" key="GridCell.Tab.0.center/0.25.1440.804@0.25.1440.804" timestamp="1621939407479" />
-    <state width="1398" height="343" key="GridCell.Tab.0.left" timestamp="1621941428536">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="194" key="GridCell.Tab.0.left" timestamp="1622038915670">
+      <screen x="0" y="25" width="1440" height="798" />
     </state>
-    <state width="1398" height="343" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1621941428536" />
-    <state width="678" height="117" key="GridCell.Tab.0.left/0.25.1440.798@0.25.1440.798" timestamp="1621933393921" />
+    <state width="1398" height="194" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1622031686216" />
+    <state width="1398" height="194" key="GridCell.Tab.0.left/0.25.1440.798@0.25.1440.798" timestamp="1622038915670" />
     <state width="865" height="199" key="GridCell.Tab.0.left/0.25.1440.799@0.25.1440.799" timestamp="1621938460229" />
     <state width="678" height="376" key="GridCell.Tab.0.left/0.25.1440.801@0.25.1440.801" timestamp="1621940782483" />
     <state width="678" height="163" key="GridCell.Tab.0.left/0.25.1440.804@0.25.1440.804" timestamp="1621939407479" />
-    <state width="1398" height="343" key="GridCell.Tab.0.right" timestamp="1621941428537">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state width="1398" height="194" key="GridCell.Tab.0.right" timestamp="1622038915672">
+      <screen x="0" y="25" width="1440" height="798" />
     </state>
-    <state width="1398" height="343" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1621941428537" />
-    <state width="678" height="117" key="GridCell.Tab.0.right/0.25.1440.798@0.25.1440.798" timestamp="1621933393922" />
+    <state width="1398" height="194" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1622031686218" />
+    <state width="1398" height="194" key="GridCell.Tab.0.right/0.25.1440.798@0.25.1440.798" timestamp="1622038915672" />
     <state width="865" height="199" key="GridCell.Tab.0.right/0.25.1440.799@0.25.1440.799" timestamp="1621938460229" />
     <state width="678" height="376" key="GridCell.Tab.0.right/0.25.1440.801@0.25.1440.801" timestamp="1621940782484" />
     <state width="678" height="163" key="GridCell.Tab.0.right/0.25.1440.804@0.25.1440.804" timestamp="1621939407480" />
@@ -279,6 +204,6 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/jump2_0$main.coverage" NAME="main Coverage Results" MODIFIED="1621941273093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/jump2_0$main.coverage" NAME="main Coverage Results" MODIFIED="1622031317432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
