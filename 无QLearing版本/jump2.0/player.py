@@ -11,6 +11,8 @@ class Player(pygame.sprite.Sprite):
     """构造函数"""
 
     def __init__(self, x, y, sx, sy, w, h, jumpforce, color, gravity=True, gravVelocity=0.5, mass=1):
+
+
         # 确定大小
         self.sx, self.sy = sx, sy
 
@@ -25,6 +27,8 @@ class Player(pygame.sprite.Sprite):
 
         # 角色外观铸造
         self.color = color
+        # self.image = pygame.Surface((w, h))
+        # self.image.fill(self.color)
         self.image = pygame.transform.scale(pygame.image.load("images/role.bmp"), (40, 55))
 
         self.isGrounded = False
@@ -38,18 +42,13 @@ class Player(pygame.sprite.Sprite):
         self.score = 0
         self.dead = False
 
-    def posX(self):
-        return self.rect.left + self.rect.width / 2
-
-    def posY(self):
-        return self.rect.top + self.rect.height
-
-    def collide(self, sx, sy, colliders, bonuses, status):
-        isColl = False
-        previous_collision = None
-        isBounce = False
+    def collide(self, sx, sy, colliders, bonuses):
         for p in colliders:
             if pygame.sprite.collide_rect(self, p):
+                # if sx > 0:
+                #    self.rect.right = p.rect.left
+                # if sx < 0:
+                #    self.rect.left = p.rect.right
                 if sy > -0.5:
                     # 踩到了陷阱踏板
                     if p.breakable:
@@ -57,9 +56,10 @@ class Player(pygame.sprite.Sprite):
                     if p.canJump:
                         self.rect.bottom = p.rect.top
                         self.isGrounded = True
-                    isColl = True
-                    previous_collision = p
-
+                        self.sy = 0
+            # if sy < 0:
+            #    self.sy = 0.1
+            #    self.rect.top = p.rect.bottom
         for b in bonuses:
             if pygame.sprite.collide_rect(self, b):
                 if sy > -1:
@@ -67,16 +67,10 @@ class Player(pygame.sprite.Sprite):
                     if b.duration > 1:
                         for i in range(b.duration):
                             self.sy += b.addForce
-                isBounce = True
-        status.append(isColl)
-        status.append(isBounce)
-        status.append(previous_collision)
 
     # 更新地图
-    def update(self, blocks, bonuses, camera, status=None):
+    def update(self, blocks, bonuses, camera):
 
-        if status is None:
-            status = []
         self.score = camera.state.y
         self.isGrounded = False
 
@@ -93,10 +87,12 @@ class Player(pygame.sprite.Sprite):
                 self.sx += self.deccelVelocity
 
         if camera.apply(self).y > YWIN:
+            # self.isGrounded = True
+            # self.rect.y = YWIN - self.rect.height
             self.dead = True
 
         if self.gravity:
-            if not self.isGrounded:
+            if self.isGrounded == False:
                 self.sy += self.gravVelocity
                 if self.sy > self.maxSpeedY:
                     self.sy = self.maxSpeedY
@@ -104,7 +100,7 @@ class Player(pygame.sprite.Sprite):
         self.rect.left = (self.rect.left + self.sx) % XWIN
 
         self.rect.top += self.sy
-        self.collide(0, self.sy, blocks, bonuses, status)
+        self.collide(0, self.sy, blocks, bonuses)
 
     # 绘制涂鸦函数
     def draw(self, surface, camera=None):
