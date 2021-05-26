@@ -2,7 +2,6 @@
     file name: camera.py
     effect: 构建摄像机类，打造画面随着主角移动而移动
 """
-from pygame.rect import Rect
 
 from settings import *
 

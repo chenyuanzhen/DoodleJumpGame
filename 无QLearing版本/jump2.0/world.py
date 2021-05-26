@@ -45,7 +45,7 @@ class World:
 
         self.generate(camera)
 
-    # 生成踏板
+    # 大概是 生成踏板？？？？
     def generate(self, camera):
         if len(self.platforms) > 0:
             #  --generating all platform settings--
