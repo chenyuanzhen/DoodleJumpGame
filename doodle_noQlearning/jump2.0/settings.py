@@ -20,7 +20,7 @@ COLORS = [
     pygame.Color(120, 120, 120),  # light grey 09  弹簧的颜色
     pygame.Color(131, 252, 107),  # light green 10  一次性踏板的颜色
     pygame.Color(87, 189, 68),  # dark green 11  固定踏板的颜色
-    pygame.Color(255, 48, 48),  # red 12 陷阱踏板的颜色
+    pygame.Color(144, 238, 144),  # 浅绿色 12 陷阱踏板的颜色
     pygame.Color(255, 255, 224),  # rice white 13 游戏背景颜色
 ]
 
