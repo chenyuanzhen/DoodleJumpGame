@@ -2,6 +2,8 @@
     file name: function.py
     effect:
 """
+from pygame import Rect
+from pygame.constants import *
 
 from function import *
 from settings import *
@@ -47,7 +49,7 @@ def taskManager(player):
         player.sy = -player.jumpforce
 
 
-def eventManager(event, player):
+def eventManager(event, player, sys, world, camera):
 
     # 退出游戏事件
     if event.type == QUIT:

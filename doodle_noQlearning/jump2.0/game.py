@@ -39,7 +39,7 @@ def main():
     while loopGame:
 
         for event in pygame.event.get():
-            eventManager(event, player)
+            eventManager(event, player, sys, world, camera)
         taskManager(player)
 
         camera.update(player)

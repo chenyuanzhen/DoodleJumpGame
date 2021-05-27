@@ -93,9 +93,9 @@ def main():
             ql.decide(world.platforms, player, player.score, previous_collision, counter)
 
         # 碰到弹簧, 且当玩家高度为0时, 预测
-        if isBounce and player == 0:
-            isBounce = False
+        if isBounce and player.sy == 0:
             ql.decide(world.platforms, player, player.score, previous_collision, counter, isBounce)
+            isBounce = False
 
         #  根据预测的平台移动
         dire, target_platform = ql.direction(player)
