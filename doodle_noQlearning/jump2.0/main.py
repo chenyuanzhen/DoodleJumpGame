@@ -1,5 +1,5 @@
 """
-    file name: main.py
+    file name: m.py
     effect: 项目的主函数，表示软件的开始
 """
 
