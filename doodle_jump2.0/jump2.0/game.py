@@ -10,7 +10,9 @@ from camera import Camera
 from settings import *
 import Qlearning as ql
 
+import sqlite3
 """主函数"""
+
 
 
 def resetGame(player, world, camera):
@@ -18,8 +20,12 @@ def resetGame(player, world, camera):
     world.__init__(player.rect.x, player.rect.y, [COLORS[11], COLORS[10], COLORS[12]], [COLORS[9]])
     camera.__init__(simple_camera, XWIN, YWIN, 6.5)
 
-
 def main():
+    # start db connection
+    conn = sqlite3.connect('DisplayScore/sco.sqlite')
+    c = conn.cursor()
+    sql_update = "insert into info(score,is_added) values(?,0);"
+
     pygame.init()
 
     #  确定字体
@@ -150,6 +156,10 @@ def main():
             # 只能设置为-1或者0 防止发生list超出错误
             previous_collision = None
             player.dead = False
+
+            ll = [int(player.score * 0.02646)]
+            c.execute(sql_update, ll)
+            conn.commit()
             resetGame(player, world, camera)
 
         # 修改游戏环境

@@ -84,25 +84,25 @@ def saveTable():
         pickle.dump(brain.action, q)
 
 
-brain = None
+brain = Q_model()
 
-try:
-    f = open('QTable.txt', 'rb')
-    print("装载qtable")
-    brain = pickle.load(f)
-    f.close()
-except EOFError:
-    print("文件不存在或者文件无权限, 需要重新训练")
-    brain = Q_model()
-
-try:
-    # 不要装json, 因为json读取字典中都是字符, 而不是整形, 但self.action中需要是整型
-    table = open('Qdict.txt', 'rb')
-    brain.action = pickle.load(table)
-    table.close()
-except IOError or EOFError or TypeError or FileNotFoundError:
-    print("文件不存在或者文件无权限, 需要重新训练")
-    brain = Q_model()
+# try:
+#     f = open('QTable.txt', 'rb')
+#     print("装载qtable")
+#     brain = pickle.load(f)
+#     f.close()
+# except EOFError:
+#     print("文件不存在或者文件无权限, 需要重新训练")
+#     brain = Q_model()
+#
+# try:
+#     # 不要装json, 因为json读取字典中都是字符, 而不是整形, 但self.action中需要是整型
+#     table = open('Qdict.txt', 'rb')
+#     brain.action = pickle.load(table)
+#     table.close()
+# except IOError or EOFError or TypeError or FileNotFoundError:
+#     print("文件不存在或者文件无权限, 需要重新训练")
+#     brain = Q_model()
 
 # 目标平台的索引
 previous_score = 0
