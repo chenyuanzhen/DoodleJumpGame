@@ -25,7 +25,7 @@ class Player(pygame.sprite.Sprite):
 
         # 角色外观铸造
         self.color = color
-        self.image = pygame.transform.scale(pygame.image.load("images/role.bmp"), (40, 55))
+        self.image = pygame.transform.scale(pygame.image.load("images/role.bmp"), (40, 50))
 
         self.isGrounded = False
         self.maxSpeedX, self.maxSpeedY = 12, 25
@@ -109,6 +109,8 @@ class Player(pygame.sprite.Sprite):
     # 绘制涂鸦函数
     def draw(self, surface, camera=None):
         if camera is not None:
-            surface.blit(self.image, camera.apply(self))
+            a = camera.apply(self)
+            a.bottom -= 13
+            surface.blit(self.image, a)
         else:
             surface.blit(self.image, self.rect)

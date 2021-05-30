@@ -43,7 +43,8 @@ def main():
 
     # Variables
     camera = Camera(simple_camera, XWIN, YWIN, 6.5)
-    player = Player(300, 550, 0, 0, 25, 30, 12, COLORS[6])
+    # player = Player(300, 550, 0, 0, 25, 30, 12, COLORS[6])
+    player = Player(300, 550, 0, 0, 25, 20, 12, COLORS[6])
     world = World(player.rect.x, player.rect.y, [COLORS[11], COLORS[10], COLORS[12]], [COLORS[9]])
 
     # 打开链表主循环
