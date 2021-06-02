@@ -15,7 +15,8 @@ class Player(pygame.sprite.Sprite):
 
         # 确定大小
         self.sx, self.sy = sx, sy
-
+        self.imageLeft = pygame.transform.scale(pygame.image.load("images/roleLeft.png"), (40, 50))
+        self.imageRight = pygame.transform.scale(pygame.image.load("images/roleRight.bmp"), (40, 50))
         # 初始化移动标记
         self.accelRight, self.accelLeft, self.decceler = False, False, False
 
@@ -29,7 +30,7 @@ class Player(pygame.sprite.Sprite):
         self.color = color
         # self.image = pygame.Surface((w, h))
         # self.image.fill(self.color)
-        self.image = pygame.transform.scale(pygame.image.load("images/role.bmp"), (40, 55))
+        self.image = pygame.transform.scale(pygame.image.load("images/roleLeft.png"), (40, 50))
 
         self.isGrounded = False
         self.maxSpeedX, self.maxSpeedY = 12, 25
@@ -73,7 +74,10 @@ class Player(pygame.sprite.Sprite):
 
         self.score = camera.state.y
         self.isGrounded = False
-
+        if self.accelRight:
+            self.image = self.imageRight
+        if self.accelLeft:
+            self.image = self.imageLeft
         if self.accelRight and self.sx < self.maxSpeedX:
             self.sx += self.accelVelocity
         if self.accelLeft and self.sx > -self.maxSpeedX:
@@ -105,6 +109,8 @@ class Player(pygame.sprite.Sprite):
     # 绘制涂鸦函数
     def draw(self, surface, camera=None):
         if camera is not None:
-            surface.blit(self.image, camera.apply(self))
+            a = camera.apply(self)
+            a.bottom -= 13
+            surface.blit(self.image, a)
         else:
             surface.blit(self.image, self.rect)

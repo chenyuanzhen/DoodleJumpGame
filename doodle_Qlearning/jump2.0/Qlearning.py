@@ -85,7 +85,7 @@ def saveTable():
 
 
 brain = Q_model()
-
+# 装载预先运行的模型
 # try:
 #     f = open('QTable.txt', 'rb')
 #     print("装载qtable")

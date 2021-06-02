@@ -40,6 +40,7 @@ def main():
 
         for event in pygame.event.get():
             eventManager(event, player, sys, world, camera)
+
         taskManager(player)
 
         camera.update(player)
@@ -50,7 +51,6 @@ def main():
 
         # 更新踏板和弹簧
         for b in world.platforms:
-            # 这里如果能换成镇哥想要的椭圆就好了，目前还没什么办法
             window.blit(b.image, camera.apply(b))
         for b in world.bonuses:
             window.blit(b.image, camera.apply(b))

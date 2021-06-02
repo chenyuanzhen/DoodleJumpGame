@@ -8,7 +8,6 @@ from pygame.constants import *
 from function import *
 from settings import *
 
-
 # ALL KIND OF CAMERA.
 def simple_camera(camera, target_rect):
 
