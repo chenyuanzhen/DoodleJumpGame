@@ -86,23 +86,23 @@ def saveTable():
 
 brain = Q_model()
 # 装载预先运行的模型
-# try:
-#     f = open('QTable.txt', 'rb')
-#     print("装载qtable")
-#     brain = pickle.load(f)
-#     f.close()
-# except EOFError:
-#     print("文件不存在或者文件无权限, 需要重新训练")
-#     brain = Q_model()
-#
-# try:
-#     # 不要装json, 因为json读取字典中都是字符, 而不是整形, 但self.action中需要是整型
-#     table = open('Qdict.txt', 'rb')
-#     brain.action = pickle.load(table)
-#     table.close()
-# except IOError or EOFError or TypeError or FileNotFoundError:
-#     print("文件不存在或者文件无权限, 需要重新训练")
-#     brain = Q_model()
+try:
+    f = open('QTable.txt', 'rb')
+    print("装载qtable")
+    brain = pickle.load(f)
+    f.close()
+except FileNotFoundError:
+    # print("文件不存在或者文件无权限, 需要重新训练")
+    brain = Q_model()
+
+try:
+    # 不要装json, 因为json读取字典中都是字符, 而不是整形, 但self.action中需要是整型
+    table = open('Qdict.txt', 'rb')
+    brain.action = pickle.load(table)
+    table.close()
+except IOError or EOFError or TypeError or FileNotFoundError:
+    print("文件不存在或者文件无权限, 需要重新训练")
+    brain = Q_model()
 
 # 目标平台的索引
 previous_score = 0
@@ -111,9 +111,6 @@ target_platform = None
 states = {}
 previous_player_height = 0
 scale_reward_pos = 1 / 75
-
-
-
 
 lastTarget = None
 
@@ -128,7 +125,6 @@ def decide(platforms, player, score, previous_collision, counter=1, isBounce=Fal
     global target_platform
     global previous_player_height
     if isBounce is not True:
-
         if target_platform is not None and previous_collision is not None and isFirst is False:
             if player.dead:
                 scale_death = 1 + score / 2000
@@ -142,15 +138,18 @@ def decide(platforms, player, score, previous_collision, counter=1, isBounce=Fal
                 if previous_collision != target_platform and previous_collision in states and target_platform in states:
 
                     if target_platform.posY() < previous_collision.posY():
-                        brain.reward(-20)
+                        brain.reward(-50)
 
                     # 目标平台与当前平台一直
                     else:
-                        brain.reward(-10)
+                        brain.reward(-30)
 
                 if previous_collision is not None and previous_collision in states:
                     brain.predict(states[previous_collision])
                     r = score - previous_score - 20
+                    # 追加限制
+                    if r > 200:
+                        r = 200
                     previous_score = score
                     brain.reward(r)
 
@@ -205,7 +204,7 @@ def direction(player):
 
     pX = target_platform.posX()
     # 防止player跳过平台
-    if pX < player.posX():
+    if pX <= player.posX():
         dire = "left"
     elif pX > player.posX():
         dire = "right"

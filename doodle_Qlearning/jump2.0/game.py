@@ -44,7 +44,7 @@ def main():
     # Variables
     camera = Camera(simple_camera, XWIN, YWIN, 6.5)
     # player = Player(300, 550, 0, 0, 25, 30, 12, COLORS[6])
-    player = Player(300, 550, 0, 0, 25, 20, 12, COLORS[6])
+    player = Player(300, 550, 0, 0, 25, 30, 12, COLORS[6])
     world = World(player.rect.x, player.rect.y, [COLORS[11], COLORS[10], COLORS[12]], [COLORS[9]])
 
     # 打开链表主循环
@@ -100,7 +100,7 @@ def main():
             ql.decide(world.platforms, player, player.score, previous_collision, counter)
 
         # 碰到弹簧, 且当玩家高度为0时, 预测
-        if isBounce and player.sy == 0:
+        if isBounce and player.sy == -15.0:
             ql.decide(world.platforms, player, player.score, previous_collision, counter, isBounce)
             isBounce = False
 
@@ -111,16 +111,21 @@ def main():
                 player.sx = -1.5
                 player.events[0] = 1
                 player.events[1] = 0
-        if dire == "right":
+        elif dire == "right":
             if player.sx <= 0:
                 player.sx = 1.5
                 player.events[0] = 0
                 player.events[1] = 1
-        # 当到达目标平台时, 停止移动
-        if target_platform is not None and target_platform.rect.x <= player.posX() <= target_platform.rect.x + target_platform.rect.width:
+        else:
+            player.sx = 0
             player.events[0] = 0
             player.events[1] = 0
+
+        # 当到达目标平台时, 停止移动
+        if target_platform is not None and target_platform.rect.x + 10 <= player.posX() <= target_platform.rect.x + target_platform.rect.width - 10:
             player.sx = 0
+            player.events[0] = 0
+            player.events[1] = 0
 
         # 更新踏板和弹簧
         for b in world.platforms:
@@ -128,7 +133,7 @@ def main():
             # 如果是预测平台, 则涂为红色, 同时覆盖之前的分数字体
             if b is target_platform:
                 b.image.fill(COLORS[2])
-            # 不是, 则要涂为原色
+            # 不是, 要涂为原色
             else:
                 b.image.fill(b.color)
 
@@ -143,13 +148,15 @@ def main():
             isBounce = False
             isCollision = False
             ql.decide(world.platforms, player, player.score, previous_collision, counter)
+
             if player.score > maxScore:
                 maxScore = player.score
                 print("maxScore: " + str(maxScore))
+
             counter += 1
-            if counter % 50 == 0:
+            if counter % 100 == 0:
                 print("counter" + str(counter))
-                print("序列化QTable")
+                print("保存QTable")
                 ql.saveTable()
                 # exit(0)
 

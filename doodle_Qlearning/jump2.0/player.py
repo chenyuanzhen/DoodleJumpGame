@@ -11,9 +11,9 @@ class Player(pygame.sprite.Sprite):
     """构造函数"""
 
     def __init__(self, x, y, sx, sy, w, h, jumpforce, color, gravity=True, gravVelocity=0.5, mass=1):
-        # 图片预加载
+        # 图片预加载 40 50
         self.imageLeft = pygame.transform.scale(pygame.image.load("images/roleLeft.png"), (40, 50))
-        self.imageRight = pygame.transform.scale(pygame.image.load("images/roleRight.bmp"), (40, 50))
+        self.imageRight = pygame.transform.scale(pygame.image.load("images/roleRight.png"), (40, 50))
 
         # 确定大小
         self.sx, self.sy = sx, sy
@@ -29,7 +29,7 @@ class Player(pygame.sprite.Sprite):
 
         # 角色外观铸造
         self.color = color
-        self.image = pygame.transform.scale(pygame.image.load("images/role.bmp"), (40, 50))
+        self.image = self.imageLeft
 
         self.isGrounded = False
         self.maxSpeedX, self.maxSpeedY = 12, 25
@@ -61,6 +61,7 @@ class Player(pygame.sprite.Sprite):
                     if p.canJump:
                         self.rect.bottom = p.rect.top
                         self.isGrounded = True
+
                     isColl = True
                     previous_collision = p
 
@@ -86,7 +87,7 @@ class Player(pygame.sprite.Sprite):
 
         if self.accelRight:
             self.image = self.imageRight
-        if self.accelLeft:
+        elif self.accelLeft:
             self.image = self.imageLeft
 
         if self.accelRight and self.sx < self.maxSpeedX:

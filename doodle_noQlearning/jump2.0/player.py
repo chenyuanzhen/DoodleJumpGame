@@ -16,7 +16,7 @@ class Player(pygame.sprite.Sprite):
         # 确定大小
         self.sx, self.sy = sx, sy
         self.imageLeft = pygame.transform.scale(pygame.image.load("images/roleLeft.png"), (40, 50))
-        self.imageRight = pygame.transform.scale(pygame.image.load("images/roleRight.bmp"), (40, 50))
+        self.imageRight = pygame.transform.scale(pygame.image.load("images/roleRight.png"), (40, 50))
         # 初始化移动标记
         self.accelRight, self.accelLeft, self.decceler = False, False, False
 
