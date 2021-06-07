@@ -55,7 +55,7 @@ app.layout = html.Div(
               Input('interval-component', 'n_intervals'))
 def update_graph_live(n):
     
-
+    fetch_data()
     # Create the graph with subplots
     fig = go.Figure(data=[go.Scatter(x=xaxis,y=scores)])
 
