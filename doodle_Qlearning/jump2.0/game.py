@@ -22,7 +22,7 @@ def resetGame(player, world, camera):
 
 def main():
     # start db connection
-    conn = sqlite3.connect('DisplayScore/sco.sqlite')
+    conn = sqlite3.connect('DisplayScore/score.sqlite')
     c = conn.cursor()
     sql_update = "insert into info(score,is_added) values(?,0);"
 

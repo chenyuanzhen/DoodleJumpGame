@@ -17,15 +17,17 @@ xaxis = []
 scores = []
 def fetch_data():
     # update score from database
-    conn = sqlite3.connect('sco.sqlite')
+    conn = sqlite3.connect('score.sqlite')
     c = conn.cursor()
     maxid = -1
     cursor = c.execute("select id,score from info where is_added = 0;")
     for row in cursor:
         maxid = max(maxid,row[0])
         scores.append(row[1])
+
+    # update database:
+    #   set those scores added to array `scores` as `is_added` and these would be ignored by latter update
     sql_update = (f"update info set is_added = 1 where id <= {maxid}")
-    
     if maxid != -1:
         cursor = c.execute(sql_update)
         conn.commit()
@@ -40,7 +42,7 @@ def fetch_data():
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.layout = html.Div(
     html.Div([
-        html.H4('html demo'),
+        # html.H4('Line Chart shows scores\' trend'),
         dcc.Graph(id='live-update-graph'),
         dcc.Interval(
             id='interval-component',
@@ -58,9 +60,21 @@ def update_graph_live(n):
     fetch_data()
     # Create the graph with subplots
     fig = go.Figure(data=[go.Scatter(x=xaxis,y=scores)])
+    fig.update_layout(
+    title="Line Chart for scores trending",
+    xaxis_title="Life",
+    yaxis_title="Score",
+    font=dict(
+        family="Courier New, monospace",
+        size=18,
+        color="RebeccaPurple"
+    ),
+    height=700,
+    )
+
+    # fig.update_xaxes()
 
     return fig
 
-
 if __name__ == '__main__':
-    app.run_server(debug=False)
+    app.run_server(debug=True)
