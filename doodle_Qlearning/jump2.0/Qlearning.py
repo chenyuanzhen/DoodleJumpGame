@@ -106,88 +106,83 @@ except IOError or EOFError or TypeError or FileNotFoundError:
 
 # 目标平台的索引
 previous_score = 0
-isFirst = True
 target_platform = None
 states = {}
-previous_player_height = 0
+last_platform = None
 scale_reward_pos = 1 / 75
-
-lastTarget = None
 
 
 # 遍历当前的所有平台, 然后预测每一个平台的分数
 # previous_collision需要从外面更新, 因为target_platform不一定是当前平台
-def decide(platforms, player, score, previous_collision, counter=1, isBounce=False):
-    global lastTarget
-    global isFirst
+def decide(platforms, player, score, real_platform, counter=1, isBounce=False):
     global previous_score
     global states
     global target_platform
-    global previous_player_height
-    if isBounce is not True:
-        if target_platform is not None and previous_collision is not None and isFirst is False:
-            if player.dead:
-                scale_death = 1 + score / 2000
-                brain.reward(-500 * scale_death)
-                previous_score = 0
-                target_platform = None
-                isFirst = True
-                return
-            else:
-                # 到达的平台不是目标平台
-                if previous_collision != target_platform and previous_collision in states and target_platform in states:
+    global last_platform
+    if isBounce is False:
+        if player.dead:
+            if target_platform in states:
+                brain.predict(states[target_platform])
+                brain.reward(-500)
+            # if real_platform in states:
+            #     brain.predict(states[real_platform])
+            #     brain.reward(-500)
 
-                    if target_platform.posY() < previous_collision.posY():
-                        brain.reward(-50)
+            previous_score = 0
+            target_platform = None
+            return
 
-                    # 目标平台与当前平台一直
-                    else:
-                        brain.reward(-30)
+        if target_platform is not None and real_platform is not None:
+            # 到达的平台不是目标平台
+            if real_platform != target_platform and real_platform in states and target_platform in states:
+                if target_platform.posY() > real_platform.posY():
+                    brain.reward(-200)
+                else:
+                    brain.reward(-100)
 
-                if previous_collision is not None and previous_collision in states:
-                    brain.predict(states[previous_collision])
-                    r = score - previous_score - 20
-                    # 追加限制
-                    if r > 200:
-                        r = 200
-                    previous_score = score
-                    brain.reward(r)
+            if real_platform is not None and real_platform in states:
+                brain.predict(states[real_platform])
+                # 防止初始分数带来过强的干扰
+                if previous_score == 0 and score != 0:
+                    previous_score = score - 20
 
-    isFirst = False
+                r = score - previous_score - 20
+                # 追加限制
+                if r > 200:
+                    r = 200
+                # print(r)
+                brain.reward(r)
+                previous_score = score
+                last_platform = real_platform
+                # ###
+                # if real_platform.kind() == 2:
+                #     brain.reward(-10000)
+    else:
+        previous_score = score
 
     states = get_states(platforms, player)
-
     maxReward = -float('inf')
 
     # 遍历平台 并从总挑选预测分数最高的平台
     for zz in range(0, len(platforms)):
-        # # 限定检查平台范围
-        if platforms[zz].posY() + 500 <= player.posY() <= platforms[zz].posY() - 500:
-            continue
-        platforms[zz].predictScore = brain.predict(states[platforms[zz]])
+        if player.posY() - 500 <= platforms[zz].posY() <= player.posY() + 300:
+            platforms[zz].predictScore = brain.predict(states[platforms[zz]])
+            if maxReward < platforms[zz].predictScore:
+                maxReward = platforms[zz].predictScore
+                target_platform = platforms[zz]
 
-        if maxReward < platforms[zz].predictScore:
-            maxReward = platforms[zz].predictScore
-            target_platform = platforms[zz]
-
-    # 记录目录平台
-    lastTarget = target_platform
     # 调用预测函数, 将当前平台更新为上一个平台
     if target_platform is not None:
         brain.predict(states[target_platform])
-    # 更新先前数据
-    previous_player_height = player.rect.height
 
 
 # 获取状态
 def get_states(platforms, player):
     state = {}
     # 设置y轴距离, 简化状态空间
-    yDivision = 20
+    yDivision = 1
     # 设置x轴距离, 简化状态空间
-    xDivision = 60
-    # 建议设置 yDivision = 20, xDivision = 60 练习局数500不到, 就可以很好的预测.
-    # 如果都设置为1, 状态空间太大, 练习时间估计超1小时.
+    xDivision = 5
     for platform in platforms:
         state[platform] = [platform.kind(), round((platform.posY() - player.posY()) / yDivision),
                            abs(round((platform.posX() - player.posX()) / xDivision))]

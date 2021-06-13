@@ -8,6 +8,7 @@ from pygame.constants import *
 from pygame.rect import Rect
 from settings import *
 
+import Qlearning as ql
 
 # ALL KIND OF CAMERA.
 def simple_camera(camera, target_rect):
@@ -83,6 +84,8 @@ def eventManager(event, player, world, camera, keyState=None):
         # 加速训练
         if event.key == K_v:
             # print("0 : " + str(keyState[0]))
+            print("保存QTable")
+            ql.saveTable()
             if keyState[0] is False:
                 keyState[0] = True
             else:

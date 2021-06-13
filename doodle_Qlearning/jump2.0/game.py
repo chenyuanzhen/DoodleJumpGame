@@ -14,11 +14,11 @@ import sqlite3
 """主函数"""
 
 
-
 def resetGame(player, world, camera):
     player.__init__(300, 550, 0, 0, 25, 30, 12, COLORS[6])
     world.__init__(player.rect.x, player.rect.y, [COLORS[11], COLORS[10], COLORS[12]], [COLORS[9]])
     camera.__init__(simple_camera, XWIN, YWIN, 6.5)
+
 
 def main():
     # start db connection
@@ -94,13 +94,12 @@ def main():
             text(190, 200, FONTS[1], COLORS[2], "GAME OVER", window)
             text(200, 300, FONTS[1], COLORS[1], "SCORE: " + str(int(player.score * 0.02646)) + " m", window)
 
-        # 碰到平台, 就进行预测
-        if isCollision:
-            isCollision = False
-            ql.decide(world.platforms, player, player.score, previous_collision, counter)
-
         # 碰到弹簧, 且当玩家高度为0时, 预测
         if isBounce and player.sy == -15.0:
+            ql.decide(world.platforms, player, player.score, previous_collision, counter, isBounce)
+        # 碰到平台, 就进行预测
+        elif isCollision:
+            isCollision = False
             ql.decide(world.platforms, player, player.score, previous_collision, counter, isBounce)
             isBounce = False
 
@@ -122,7 +121,7 @@ def main():
             player.events[1] = 0
 
         # 当到达目标平台时, 停止移动
-        if target_platform is not None and target_platform.rect.x + 10 <= player.posX() <= target_platform.rect.x + target_platform.rect.width - 10:
+        if target_platform is not None and target_platform.rect.x + 15 <= player.posX() <= target_platform.rect.x + target_platform.rect.width - 15:
             player.sx = 0
             player.events[0] = 0
             player.events[1] = 0
@@ -133,6 +132,11 @@ def main():
             # 如果是预测平台, 则涂为红色, 同时覆盖之前的分数字体
             if b is target_platform:
                 b.image.fill(COLORS[2])
+            elif b is previous_collision:
+                if b.kind() == 2:
+                    b.image.fill(COLORS[9])
+                else:
+                    b.image.fill(COLORS[1])
             # 不是, 要涂为原色
             else:
                 b.image.fill(b.color)
@@ -143,11 +147,12 @@ def main():
         for b in world.bonuses:
             window.blit(b.image, camera.apply(b))
 
-        # 重置循环 死亡给分有问题,
+        # 重置循环
         if player.dead:
             isBounce = False
             isCollision = False
             ql.decide(world.platforms, player, player.score, previous_collision, counter)
+            previous_collision = None
 
             if player.score > maxScore:
                 maxScore = player.score
@@ -156,19 +161,17 @@ def main():
             counter += 1
             if counter % 100 == 0:
                 print("counter" + str(counter))
-                print("保存QTable")
-                ql.saveTable()
-                # exit(0)
+            #     print("保存QTable")
+            #     ql.saveTable()
 
-            player.sy = 0
-            # 只能设置为-1或者0 防止发生list超出错误
-            previous_collision = None
-            player.dead = False
 
             ll = [int(player.score * 0.02646)]
             c.execute(sql_update, ll)
             conn.commit()
+            # pygame.display.update()
+            # input()
             resetGame(player, world, camera)
+
 
         # 修改游戏环境
         # 加速

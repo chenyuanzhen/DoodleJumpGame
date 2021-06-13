@@ -19,8 +19,8 @@ class World:
         self.widthBonus = 12
         self.heightBonus = 12
         self.colorsBonus = colorsBonus
-
-        self.bonusSpawnChance = 13
+        # 弹簧可能性
+        self.bonusSpawnChance = 10
         self.platformChanceBroken = 10
 
         self.minY = self.heightPlatform + 30
@@ -57,13 +57,14 @@ class World:
             for i in range(len(self.platforms)):
                 if i > 0 and self.platforms[-i].canJump:
                     y = self.platforms[-i].rect.y - random.randint(self.minY, self.maxY)
-                    if y + self.heightPlatform < camera.apply(
-                            self.platforms[-1]).y or y > self.heightPlatform + camera.apply(self.platforms[-1]).y:
+                    if y + self.heightPlatform < camera.apply(self.platforms[-1]).y \
+                            or y > self.heightPlatform + camera.apply(self.platforms[-1]).y:
                         break
                     else:
                         y -= self.heightPlatform * 2
                         break
-            rect = Rect(x, y, self.widthPlatform, self.heightPlatform)  # futur platform rect
+            # futur platform rect
+            rect = Rect(x, y, self.widthPlatform, self.heightPlatform)
 
             # 随机生成踏板类型
             breack = random.randint(0, self.platformChanceBroken)
@@ -86,7 +87,7 @@ class World:
                 color = self.colorPlatforms[1]
                 breakable = True
             # have a bonus on it
-            if randomBonus == 1 and breakable == False:
+            if randomBonus == 1 and breakable is False:
                 haveBonus = True
 
             # create platform
